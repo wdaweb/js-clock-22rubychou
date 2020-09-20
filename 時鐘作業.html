@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>時鐘作業</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      /* body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      } */
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: linear-gradient(45deg, rgb(255, 172, 179) 0%, rgb(255, 242, 185) 100%);
+      }
+
+      #clock {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        border: 10px solid #fff;
+        box-shadow: 0px 0px 10px rgba(155, 81, 81, 0.5);
+        position: relative;
+        background: linear-gradient(transparent, rgba(255, 255, 255, 0.274)), url(./images/cat.png),
+          rgb(218, 208, 194);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      #cir {
+        width: 65px;
+        height: 50px;
+        background: url(./images/character_taiyaki.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        left: 92.5px;
+        top: 100px;
+        z-index: 999;
+        animation: jello 2s infinite;
+      }
+      #hour {
+        position: absolute;
+        width: 20%;
+        height: 10px;
+        background: rgb(214, 241, 124);
+        border-radius: 5px;
+        left: 30%;
+        top: calc(50% - 5px);
+        transform-origin: right center;
+        transform: rotate(0deg);
+        display: inline-block;
+      }
+      #minute {
+        position: absolute;
+        width: 40%;
+        height: 6px;
+        background: rgb(143, 241, 200);
+        border-radius: 5px;
+        left: 10%;
+        top: calc(50% - 3px);
+        transform-origin: right center;
+        transform: rotate(0deg);
+        display: inline-block;
+      }
+      #second {
+        position: absolute;
+        width: 45%;
+        height: 4px;
+        background: rgb(190, 104, 104);
+        border-radius: 5px;
+        left: 5%;
+        top: calc(50% - 2px);
+        transform-origin: right center;
+        transform: rotate(0deg);
+        display: inline-block;
+      }
+      #tw {
+        width: 5px;
+        height: 10px;
+        border-radius: 5px;
+        position: absolute;
+        background: #fff;
+        top: 1px;
+        left: 122.5px;
+      }
+      #six {
+        width: 5px;
+        height: 10px;
+        border-radius: 5px;
+        position: absolute;
+        background: #fff;
+        top: 239px;
+        left: 122.5px;
+      }
+      #tr {
+        width: 10px;
+        height: 5px;
+        border-radius: 5px;
+        position: absolute;
+        background: #fff;
+        top: 120px;
+        left: 239px;
+      }
+      #six {
+        width: 5px;
+        height: 10px;
+        border-radius: 5px;
+        position: absolute;
+        background: #fff;
+        top: 239px;
+        left: 122.5px;
+      }
+      #nine {
+        width: 10px;
+        height: 5px;
+        border-radius: 5px;
+        position: absolute;
+        background: #fff;
+        top: 120px;
+        left: 1px;
+      }
+      .round {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 10px solid #fff;
+        display: inline-block;
+        position: absolute;
+        animation: roundani 1s infinite alternate;
+      }
+      @keyframes roundani {
+        from {
+          border: 10px;
+          border-style: solid;
+          border-color: rgb(183, 229, 243);
+        }
+        20% {
+          border-style: solid;
+          border-color: rgb(255, 255, 255);
+        }
+        to {
+          border: 80px;
+          border-style: solid;
+          border-color: rgb(183, 229, 243);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="round"></div>
+    <div class="round2"></div>
+    <div id="clock" class="clo">
+      <div id="cir"></div>
+      <div id="tw"></div>
+      <div id="tr"></div>
+      <div id="six"></div>
+      <div id="nine"></div>
+      <div id="hour"></div>
+      <div id="minute"></div>
+      <div id="second"></div>
+    </div>
+
+    <script>
+      const hour = document.getElementById("hour");
+      const cir = document.getElementById("cir");
+      const minute = document.getElementById("minute");
+      const second = document.getElementById("second");
+
+      const setClock = () => {
+        const now = new Date();
+        const h = now.getHours();
+        const m = now.getMinutes();
+        const s = now.getSeconds();
+
+        hour.style.transform = `rotate(${h * 30 + 90}deg)`;
+        minute.style.transform = `rotate(${m * 6 + 90}deg)`;
+        second.style.transform = `rotate(${s * 6 + 90}deg)`;
+      };
+
+      setInterval(setClock, 1000);
+      setClock();
+    </script>
+  </body>
+</html>
